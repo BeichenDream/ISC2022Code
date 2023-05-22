@@ -99,6 +99,14 @@ public class HotSpot {
                     loadMethod = getMethod(NativeLibraryClass,"load",new Class[]{String.class,boolean.class});
                     loadMethodArgs = new Object[2];
                     loadMethodArgs[1] = false;
+
+                    if (loadMethod == null){
+                        loadMethod = getMethod(NativeLibraryClass,"load",new Class[]{String.class,boolean.class,boolean.class});
+                        loadMethodArgs = new Object[3];
+                        loadMethodArgs[1] = false;
+                        loadMethodArgs[2] = true;
+                    }
+
                 }
                 if (loadMethod == null){
                     loadMethod = getMethod(NativeLibraryClass,"load0",new Class[]{String.class});
@@ -2166,8 +2174,8 @@ public class HotSpot {
 //        testReplaceAddress();
 //        testReplaceMemory();
 //        testReplaceMemoryAndCallOld();
-//        testReplaceNativeAddressAndCallOld();
-        testRunShellcode();
+        testReplaceNativeAddressAndCallOld();
+//        testRunShellcode();
 
 
 
