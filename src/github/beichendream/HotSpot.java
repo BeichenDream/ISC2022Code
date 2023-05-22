@@ -1852,14 +1852,14 @@ public class HotSpot {
 
         long hotspotNMethodAddress = 0;
 
-//        for (int i = 0; i < 10000; i++) {
-////            currentTimeMillis();
-//            System.currentTimeMillis();
-//            hotspotNMethodAddress = unsafe.getAddress(hotspotMethodHandle + _codeField);
-//            if (hotspotNMethodAddress != 0){
-//                break;
-//            }
-//        }
+        for (int i = 0; i < 10000; i++) {
+            currentTimeMillis2();
+            System.currentTimeMillis();
+            hotspotNMethodAddress = unsafe.getAddress(hotspotMethodHandle + _codeField);
+            if (hotspotNMethodAddress != 0){
+                break;
+            }
+        }
 
         //什么也不做
         if(hotspotNMethodAddress == 0 ){
@@ -1874,11 +1874,11 @@ public class HotSpot {
         long system_code = unsafe.getAddress(systemMethodHandle + _codeField);
         long system_i2i_entry = unsafe.getAddress(systemMethodHandle + _i2i_entryField);
 
-//        unsafe.putAddress(systemMethodHandle + _from_interpreted_entryField,unsafe.getAddress(hotspotMethodHandle + _from_interpreted_entryField));
-//        unsafe.putAddress(systemMethodHandle + _from_compiled_entry_entryField,unsafe.getAddress(hotspotMethodHandle + _from_compiled_entry_entryField));
-//        unsafe.putAddress(systemMethodHandle + _codeField,unsafe.getAddress(hotspotMethodHandle + _codeField));
-        //由于native方法和普通的java方法传参不同需要修适配器
-//        unsafe.putAddress(systemMethodHandle + _i2i_entryField,unsafe.getAddress(hotspotMethodHandle + _i2i_entryField));
+        unsafe.putAddress(systemMethodHandle + _from_interpreted_entryField,unsafe.getAddress(hotspotMethodHandle + _from_interpreted_entryField));
+        unsafe.putAddress(systemMethodHandle + _from_compiled_entry_entryField,unsafe.getAddress(hotspotMethodHandle + _from_compiled_entry_entryField));
+        unsafe.putAddress(systemMethodHandle + _codeField,unsafe.getAddress(hotspotMethodHandle + _codeField));
+//        由于native方法和普通的java方法传参不同需要修适配器
+        unsafe.putAddress(systemMethodHandle + _i2i_entryField,unsafe.getAddress(hotspotMethodHandle + _i2i_entryField));
 
 
         //禁止该方法经过其它编译器进行编译
